@@ -1,0 +1,92 @@
+(api-start-python-journal "journal.py")
+
+define/models/solver/pressure-based
+
+define/models/unsteady-1st-order?
+
+define/models/energy?
+
+define/models/viscous/kw-sst?
+
+define/models/species/species-transport?
+>hydrogen-air
+
+define/models/species/volumetric-reactions?
+
+define/boundary-conditions/velocity-inlet
+(inlet-h2 inlet-air)
+zone id/name [inlet-h2] inlet-air
+Velocity Specification Method: Magnitude and Direction [no] 
+Velocity Specification Method: Components [no] 
+Velocity Specification Method: Magnitude, Normal to Boundary [yes] 
+Reference Frame: Absolute [yes] 
+Use Profile for Velocity Magnitude? [no] 
+Velocity Magnitude (constant or expresssion) (in [m/s]) [0] 15
+Use Profile for Supersonic/Initial Gauge Pressure? [no] 
+Supersonic/Initial Gauge Pressure (constant or expresssion) (in [Pa]) [0] 
+Use Profile for Temperature? [no] 
+Temperature (constant or expresssion) (in [K]) [300] 288.16
+Turbulent Specification Method: K and Omega [no] 
+Turbulent Specification Method: Intensity and Length Scale [no] 
+Turbulent Specification Method: Intensity and Viscosity Ratio [yes] 
+Turbulent Intensity (constant or expresssion) (in [%]) [5] 
+Turbulent Viscosity Ratio (constant or expresssion) [10] 
+Specify Species in Mole Fractions? [no] 
+Use Profile for h2 fraction/ mass flux? [no] 
+h2 fraction/ mass flux (constant or expresssion) [0] 
+Use Profile for o2 fraction/ mass flux? [no] 
+o2 fraction/ mass flux (constant or expresssion) [0] 0.21
+Use Profile for h2o fraction/ mass flux? [no] 
+h2o fraction/ mass flux (constant or expresssion) [0] 
+
+define/boundary-conditions/velocity-inlet
+(inlet-h2 inlet-air)
+zone id/name [inlet-h2] inlet-h2
+Velocity Specification Method: Magnitude and Direction [no] 
+Velocity Specification Method: Components [no] 
+Velocity Specification Method: Magnitude, Normal to Boundary [yes] 
+Reference Frame: Absolute [yes] 
+Use Profile for Velocity Magnitude? [no] 
+Velocity Magnitude (constant or expresssion) (in [m/s]) [0] 0.75
+Use Profile for Supersonic/Initial Gauge Pressure? [no] 
+Supersonic/Initial Gauge Pressure (constant or expresssion) (in [Pa]) [0] 
+Use Profile for Temperature? [no] 
+Temperature (constant or expresssion) (in [K]) [300] 288.16
+Turbulent Specification Method: K and Omega [no] 
+Turbulent Specification Method: Intensity and Length Scale [no] 
+Turbulent Specification Method: Intensity and Viscosity Ratio [yes] 
+Turbulent Intensity (constant or expresssion) (in [%]) [5] 
+Turbulent Viscosity Ratio (constant or expresssion) [10] 
+Specify Species in Mole Fractions? [no] 
+Use Profile for h2 fraction/ mass flux? [no] 
+h2 fraction/ mass flux (constant or expresssion) [0] 1
+Use Profile for o2 fraction/ mass flux? [no] 
+o2 fraction/ mass flux (constant or expresssion) [0] 
+Use Profile for h2o fraction/ mass flux? [no] 
+h2o fraction/ mass flux (constant or expresssion) [0] 
+
+define/boundary-conditions/pressure-outlet
+
+define/boundary-conditions/wall
+
+solve/set/p-v-coupling
+>24
+
+solve/set/gradient-scheme
+
+solve/monitors/residual/convergence-criteria
+>10e-3
+
+file/auto-save/data-frequency
+>1
+
+solve/set/time-step
+>2.5e-05
+
+solve/initialize/hyb-initialization
+
+solve/iterate
+-->2000
+
+(api-stop-python-journal)
+
