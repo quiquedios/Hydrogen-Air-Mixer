@@ -7,6 +7,7 @@ This project on hydrogen-air mixers features:
 This repository contains:
 - The already meshed geometry of the mixer
 - The complete optimization code
+- The Fluent TUI commands to generate the code
 
 INSTRUCTIONS:
 1. Use pip to install all libraries
